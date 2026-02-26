@@ -403,6 +403,22 @@ section {
   }
 }
 
+.about-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: 2rem;
+}
+
+.about-sections article {
+  flex: 1 1 260px;
+  padding: 1rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #fff;
+}
+
 #site-footer {
   display: block;
   min-height: var(--footer-height);
