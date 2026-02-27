@@ -562,8 +562,8 @@ section {
 
 footer {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   background: var(--header-bg);
   color: #fff;
   text-align: center;
