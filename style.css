@@ -419,6 +419,127 @@ section {
   background: #fff;
 }
 
+#history {
+  flex-basis: 100%;
+}
+
+#history h3 {
+  margin: 0;
+}
+
+.history-toggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #0f3a49;
+  font: inherit;
+  font-size: 1.18rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.history-toggle::after {
+  content: "▾";
+  font-size: 0.95rem;
+  transform: translateY(1px);
+  transition: transform 0.2s ease;
+}
+
+.history-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg) translateY(-1px);
+}
+
+.history-content {
+  margin-top: 0.9rem;
+  padding: 1rem 1rem 0.2rem;
+  border: 1px solid #dce6eb;
+  border-radius: 8px;
+  background: #f8fcff;
+  max-height: 460px;
+  overflow: auto;
+}
+
+.history-content h4 {
+  margin-top: 0;
+}
+
+.history-content p {
+  margin: 0 0 0.9rem;
+}
+
+.history-lead-figure {
+  float: left;
+  width: 220px;
+  margin: 0.1rem 1rem 0.7rem 0;
+}
+
+.history-lead-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #d5e0e8;
+}
+
+.history-lead-figure figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: #314955;
+}
+
+.history-inline-figure {
+  float: left;
+  width: 344px;
+  margin: 0.1rem 1rem 0.7rem 0;
+}
+
+.history-inline-figure-right {
+  float: right;
+  margin: 0.1rem 0 0.7rem 1rem;
+}
+
+.history-inline-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #d5e0e8;
+}
+
+.history-inline-figure figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: #314955;
+}
+
+.history-content::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@media (max-width: 720px) {
+  .history-lead-figure {
+    float: none;
+    width: min(100%, 300px);
+    margin: 0 auto 0.9rem;
+  }
+
+  .history-inline-figure,
+  .history-inline-figure-right {
+    float: none;
+    width: min(100%, 468px);
+    margin: 0 auto 0.9rem;
+  }
+}
+
 #site-footer {
   display: block;
   min-height: var(--footer-height);
