@@ -419,6 +419,21 @@ section {
   background: #fff;
 }
 
+.contact-hours {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #d9e2e8;
+}
+
+.contact-hours h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+}
+
+.contact-hours p {
+  margin: 0 0 0.35rem;
+}
+
 #history {
   flex-basis: 100%;
 }
