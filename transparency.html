@@ -49,7 +49,7 @@
 				<button type="button" class="transparency-card" data-title="Вакансії" data-description="У цьому розділі можна показувати актуальні вакансії, вимоги до кандидатів і спосіб подання документів." aria-pressed="false">Вакансії</button>
 				<button type="button" class="transparency-card" data-title="Педагогічний колектив" data-description="Тут можна розмістити склад педагогічного колективу, посади, кваліфікацію та контактну інформацію." aria-pressed="false">Педагогічний колектив</button>
 				<button type="button" class="transparency-card" data-title="Правила поведінки" data-description="У цьому блоці варто показати правила поведінки для учнів, батьків і відвідувачів закладу." aria-pressed="false">Правила поведінки</button>
-				<button type="button" class="transparency-card" data-title="Розклад" data-description="Тут можна публікувати актуальний розклад занять, дзвінків або окремих подій закладу." aria-pressed="false">Розклад</button>
+				<button type="button" class="transparency-card" data-title="Розклад" data-description="Актуальний розклад занять відображається нижче." data-image-src="les.jpg" data-image-alt="Розклад занять" aria-pressed="false">Розклад</button>
 				<button type="button" class="transparency-card" data-title="Форма здобуття освіти" data-description="У цей розділ можна додати інформацію про очну, дистанційну чи інші форми здобуття освіти." aria-pressed="false">Форма здобуття освіти</button>
 				<button type="button" class="transparency-card" data-title="Здорове харчування в закладі освіти" data-description="Тут можна розмістити меню, норми харчування, організацію харчування та корисні рекомендації." aria-pressed="false">Здорове харчування в закладі освіти</button>
 			</div>
@@ -57,6 +57,9 @@
 				<p class="transparency-panel-label">Обраний розділ</p>
 				<h3 id="transparency-title">Освітня програма</h3>
 				<p id="transparency-description">Тут можна розмістити повний опис освітньої програми, навчальні цілі, компоненти та документи для завантаження.</p>
+				<figure id="transparency-image-wrap" class="transparency-image-wrap" hidden>
+					<img id="transparency-image" class="transparency-image" src="" alt="">
+				</figure>
 			</article>
 		</section>
 	</main>
@@ -71,8 +74,10 @@
 			const cards = document.querySelectorAll(".transparency-card");
 			const title = document.getElementById("transparency-title");
 			const description = document.getElementById("transparency-description");
+			const imageWrap = document.getElementById("transparency-image-wrap");
+			const image = document.getElementById("transparency-image");
 
-			if (!cards.length || !title || !description) return;
+			if (!cards.length || !title || !description || !imageWrap || !image) return;
 
 			cards.forEach((card) => {
 				card.addEventListener("click", () => {
@@ -85,6 +90,16 @@
 					card.setAttribute("aria-pressed", "true");
 					title.textContent = card.dataset.title || "";
 					description.textContent = card.dataset.description || "";
+
+					if (card.dataset.imageSrc) {
+						image.src = card.dataset.imageSrc;
+						image.alt = card.dataset.imageAlt || card.dataset.title || "";
+						imageWrap.hidden = false;
+					} else {
+						imageWrap.hidden = true;
+						image.removeAttribute("src");
+						image.alt = "";
+					}
 				});
 			});
 		})();

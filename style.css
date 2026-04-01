@@ -497,6 +497,22 @@ section {
   color: #35515b;
 }
 
+.transparency-image-wrap {
+  margin: 1rem 0 0;
+  padding: 0.75rem;
+  border: 1px solid #d8e3e8;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fbfdff 0%, #f2f7fa 100%);
+}
+
+.transparency-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 14px 28px rgba(12, 38, 47, 0.12);
+}
+
 .about-sections {
   display: flex;
   flex-wrap: wrap;
