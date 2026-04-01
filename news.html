@@ -4,22 +4,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Сайт Антипівської гімназії з основною інформацією, новинами та контактами">
+	<meta name="description" content="Новини Антипівської гімназії">
 	<meta name="theme-color" content="#333333">
-	<title>Головна - Антипівська гімназія</title>
+	<title>Новини - Антипівська гімназія</title>
 	<link rel="icon" href="favicon.ico" sizes="any">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<link rel="manifest" href="site.webmanifest">
 	<link rel="stylesheet" href="style.css">
-	<script>
-		if ("serviceWorker" in navigator) {
-			window.addEventListener("load", () => {
-				navigator.serviceWorker.register("sw.js");
-			});
-		}
-	</script>
 </head>
 
 <body>
@@ -42,9 +35,16 @@
 		</nav>
 	</header>
 	<main>
-		<section id="home">
-			<h2>Головна</h2>
-			<p>Офіційний сайт школи: новини, розклад подій та корисна інформація для учнів і батьків.</p>
+		<section id="news">
+			<h2>Новини</h2>
+			<article>
+				<h3>Події гімназії</h3>
+				<p>Тут можна розміщувати актуальні новини, оголошення та важливі події зі шкільного життя.</p>
+			</article>
+			<article>
+				<h3>Досягнення учнів</h3>
+				<p>Сторінка підходить для публікації результатів конкурсів, олімпіад, проєктів та святкових заходів.</p>
+			</article>
 		</section>
 	</main>
 	<div id="site-footer">
