@@ -403,6 +403,100 @@ section {
   }
 }
 
+#transparency {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.transparency-head {
+  padding: 1.35rem 1.5rem;
+  border-radius: 20px;
+  color: #f5fbff;
+  background:
+    radial-gradient(circle at top right, rgba(244, 198, 110, 0.28), transparent 28%),
+    linear-gradient(135deg, #103847 0%, #145463 58%, #1b7082 100%);
+  box-shadow: 0 18px 36px rgba(13, 42, 52, 0.18);
+}
+
+.transparency-head h2 {
+  margin: 0 0 0.55rem;
+}
+
+.transparency-head p {
+  margin: 0;
+  max-width: 760px;
+  color: rgba(245, 251, 255, 0.9);
+}
+
+.transparency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.transparency-card {
+  appearance: none;
+  width: 100%;
+  min-height: 112px;
+  padding: 1rem 1.05rem;
+  border: 1px solid #d8e3e8;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f4fafc 100%);
+  color: #173642;
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(12, 38, 47, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.transparency-card:hover,
+.transparency-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: #94bcc8;
+  box-shadow: 0 16px 30px rgba(12, 38, 47, 0.14);
+  outline: none;
+}
+
+.transparency-card.is-active {
+  border-color: #1f6f81;
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, #155062 0%, #1f6f81 55%, #2f8a96 100%);
+  box-shadow: 0 18px 34px rgba(21, 80, 98, 0.28);
+}
+
+.transparency-panel {
+  padding: 1.35rem 1.5rem;
+  border: 1px solid #d5e1e6;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(12, 38, 47, 0.08);
+}
+
+.transparency-panel-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5a7883;
+}
+
+.transparency-panel h3 {
+  margin: 0 0 0.55rem;
+  color: #103847;
+}
+
+.transparency-panel p:last-child {
+  margin: 0;
+  color: #35515b;
+}
+
 .about-sections {
   display: flex;
   flex-wrap: wrap;
@@ -541,6 +635,14 @@ section {
 }
 
 @media (max-width: 720px) {
+  .transparency-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transparency-card {
+    min-height: auto;
+  }
+
   .history-lead-figure {
     float: none;
     width: min(100%, 300px);
