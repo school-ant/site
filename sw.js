@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v7";
+const CACHE_VERSION = "v8";
 const CACHE_NAME = `school-site-${CACHE_VERSION}`;
 const ASSETS = [
   "site.webmanifest",
