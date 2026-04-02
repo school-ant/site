@@ -7,18 +7,18 @@
 	<meta name="description" content="Інформаційна відкритість та прозорість Антипівської гімназії">
 	<meta name="theme-color" content="#333333">
 	<title>Прозорість - Антипівська гімназія</title>
-	<link rel="icon" href="favicon.ico" sizes="any">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="icon" href="images/favicon.ico" sizes="any">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="manifest" href="site.webmanifest">
 	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-	<header id="site-header-bar" role="banner">
+	<header class="siteHeaderBar" role="banner">
 		<a href="index.html" aria-label="Перейти на головну сторінку">
-			<img src="logo.avif" alt="Логотип школи" width="96" height="96" loading="eager" decoding="async">
+			<img src="images/logo.avif" alt="Логотип школи" width="96" height="96" loading="eager" decoding="async">
 			<hgroup>
 				<h1>Антипівська гімназія</h1>
 				<h2>з дошкільним підрозділом</h2>
@@ -35,75 +35,33 @@
 		</nav>
 	</header>
 	<main>
-		<section id="transparency">
-			<div class="transparency-head">
+		<section class="transparency">
+			<div class="head">
 				<h2>Прозорість</h2>
 				<p>Оберіть потрібний розділ, щоб переглянути інформацію.</p>
 			</div>
-			<div class="transparency-grid" role="list">
-				<button type="button" class="transparency-card is-active" data-title="Освітня програма" data-description="Тут можна розмістити повний опис освітньої програми, навчальні цілі, компоненти та документи для завантаження." aria-pressed="true">Освітня програма</button>
-				<button type="button" class="transparency-card" data-title="Ліцензії" data-description="У цьому розділі зручно показати чинні ліцензії закладу, реквізити документів та скан-копії." aria-pressed="false">Ліцензії</button>
-				<button type="button" class="transparency-card" data-title="Положення про створення філії" data-description="Тут можна публікувати положення, накази та супровідні документи щодо створення філії." aria-pressed="false">Положення про створення філії</button>
-				<button type="button" class="transparency-card" data-title="Доступність" data-description="У цей блок можна додати інформацію про безбар’єрність, умови доступу до приміщень та освітнього процесу." aria-pressed="false">Доступність</button>
-				<button type="button" class="transparency-card" data-title="Зарахування до закладу освіти" data-description="Тут можна розмістити правила зарахування, перелік документів, строки подання та контакти для звернень." aria-pressed="false">Зарахування до закладу освіти</button>
-				<button type="button" class="transparency-card" data-title="Вакансії" data-description="У цьому розділі можна показувати актуальні вакансії, вимоги до кандидатів і спосіб подання документів." aria-pressed="false">Вакансії</button>
-				<button type="button" class="transparency-card" data-title="Педагогічний колектив" data-description="Тут можна розмістити склад педагогічного колективу, посади, кваліфікацію та контактну інформацію." aria-pressed="false">Педагогічний колектив</button>
-				<button type="button" class="transparency-card" data-title="Правила поведінки" data-description="У цьому блоці варто показати правила поведінки для учнів, батьків і відвідувачів закладу." aria-pressed="false">Правила поведінки</button>
-				<button type="button" class="transparency-card" data-title="Розклад" data-description="Актуальний розклад занять відображається нижче." data-image-src="les.jpg" data-image-alt="Розклад занять" aria-pressed="false">Розклад</button>
-				<button type="button" class="transparency-card" data-title="Форма здобуття освіти" data-description="У цей розділ можна додати інформацію про очну, дистанційну чи інші форми здобуття освіти." aria-pressed="false">Форма здобуття освіти</button>
-				<button type="button" class="transparency-card" data-title="Здорове харчування в закладі освіти" data-description="Тут можна розмістити меню, норми харчування, організацію харчування та корисні рекомендації." aria-pressed="false">Здорове харчування в закладі освіти</button>
+			<div class="grid">
+				<a href="docs/osvprog.pdf" target="_blank" rel="noopener noreferrer" class="card">Освітня програма</a>
+				<a href="#" class="card">Ліцензії</a>
+				<a href="#" class="card">Положення про створення філії</a>
+				<a href="#" class="card">Доступність</a>
+				<a href="#" class="card">Зарахування до закладу освіти</a>
+				<a href="#" class="card">Вакансії</a>
+				<a href="#" class="card">Педагогічний колектив</a>
+				<a href="#" class="card">Правила поведінки</a>
+				<a href="#" class="card">Розклад</a>
+				<a href="#" class="card">Форма здобуття освіти</a>
+				<a href="#" class="card">Здорове харчування в закладі освіти</a>
 			</div>
-			<article class="transparency-panel" aria-live="polite">
-				<p class="transparency-panel-label">Обраний розділ</p>
-				<h3 id="transparency-title">Освітня програма</h3>
-				<p id="transparency-description">Тут можна розмістити повний опис освітньої програми, навчальні цілі, компоненти та документи для завантаження.</p>
-				<figure id="transparency-image-wrap" class="transparency-image-wrap" hidden>
-					<img id="transparency-image" class="transparency-image" src="" alt="">
-				</figure>
-			</article>
 		</section>
 	</main>
-	<div id="site-footer">
+
+	<div class="siteFooter">
 		<footer>
 			<p>&copy; <span id="currentYear">2026</span> Шкільний сайт. Усі права захищено.</p>
 			<script>document.getElementById("currentYear").textContent = new Date().getFullYear();</script>
 		</footer>
 	</div>
-	<script>
-		(() => {
-			const cards = document.querySelectorAll(".transparency-card");
-			const title = document.getElementById("transparency-title");
-			const description = document.getElementById("transparency-description");
-			const imageWrap = document.getElementById("transparency-image-wrap");
-			const image = document.getElementById("transparency-image");
-
-			if (!cards.length || !title || !description || !imageWrap || !image) return;
-
-			cards.forEach((card) => {
-				card.addEventListener("click", () => {
-					cards.forEach((item) => {
-						item.classList.remove("is-active");
-						item.setAttribute("aria-pressed", "false");
-					});
-
-					card.classList.add("is-active");
-					card.setAttribute("aria-pressed", "true");
-					title.textContent = card.dataset.title || "";
-					description.textContent = card.dataset.description || "";
-
-					if (card.dataset.imageSrc) {
-						image.src = card.dataset.imageSrc;
-						image.alt = card.dataset.imageAlt || card.dataset.title || "";
-						imageWrap.hidden = false;
-					} else {
-						imageWrap.hidden = true;
-						image.removeAttribute("src");
-						image.alt = "";
-					}
-				});
-			});
-		})();
-	</script>
 </body>
 
 </html>
