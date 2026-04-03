@@ -432,6 +432,86 @@ section {
   }
 }
 
+.healthyFood {
+  display: grid;
+  gap: 1.25rem;
+  scroll-margin-top: 2rem;
+}
+
+.healthyFoodHero {
+  padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
+  border-radius: 24px;
+  text-align: center;
+  color: #ffffff;
+  background:
+    linear-gradient(125deg, rgba(49, 35, 43, 0.98) 0%, rgba(69, 45, 58, 0.96) 50%, rgba(93, 60, 74, 0.96) 100%);
+  box-shadow: 0 18px 40px rgba(35, 22, 29, 0.22);
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    line-height: 1.04;
+    font-weight: 700;
+  }
+}
+
+.healthyFoodBody {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.healthyFoodPoster,
+.healthyFoodContent {
+  padding: 1.35rem 1.5rem;
+  border: 1px solid #d9e2d2;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(15, 38, 28, 0.08);
+}
+
+.healthyFoodPoster {
+  background: linear-gradient(180deg, #f5f2d7 0%, #eef0d6 100%);
+}
+
+.healthyFoodPosterEyebrow {
+  margin: 0 0 0.35rem;
+  color: #8d5a19;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.healthyFoodPoster h3,
+.healthyFoodContent h3 {
+  margin: 0 0 0.8rem;
+}
+
+.healthyFoodPoster p,
+.healthyFoodContent p {
+  margin: 0 0 0.85rem;
+}
+
+.healthyFoodPoster ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.healthyFoodPoster li {
+  margin-bottom: 0.45rem;
+}
+
+.healthyFoodContent h3 {
+  color: #6f9115;
+  font-size: 1.55rem;
+}
+
 .about {
   .sections {
     display: flex;
