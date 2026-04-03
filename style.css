@@ -596,6 +596,89 @@ section {
   color: #23486f;
 }
 
+.educationForms {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.educationFormsHero {
+  padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
+  border-radius: 24px;
+  text-align: center;
+  color: #ffffff;
+  background:
+    linear-gradient(125deg, rgba(33, 60, 49, 0.98) 0%, rgba(47, 88, 67, 0.96) 50%, rgba(74, 118, 86, 0.96) 100%);
+  box-shadow: 0 18px 40px rgba(22, 43, 34, 0.22);
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4.8vw, 4rem);
+    line-height: 1.06;
+    font-weight: 700;
+  }
+}
+
+.educationFormsBody {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.educationFormsPoster,
+.educationFormsContent article {
+  padding: 1.35rem 1.5rem;
+  border: 1px solid #d9e4dc;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(19, 42, 31, 0.08);
+}
+
+.educationFormsPoster {
+  background: linear-gradient(180deg, #eef6f0 0%, #e4efe6 100%);
+}
+
+.educationFormsPosterEyebrow {
+  margin: 0 0 0.35rem;
+  color: #3a6d55;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.educationFormsPoster h3,
+.educationFormsContent h3 {
+  margin: 0 0 0.8rem;
+}
+
+.educationFormsPoster p,
+.educationFormsContent p {
+  margin: 0 0 0.85rem;
+}
+
+.educationFormsContent {
+  display: grid;
+  gap: 1rem;
+}
+
+.educationFormsContent ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.educationFormsContent li {
+  margin-bottom: 0.55rem;
+}
+
+.educationFormsContent h3 {
+  color: #2f6650;
+}
+
 .about {
   .sections {
     display: flex;
