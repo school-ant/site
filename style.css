@@ -564,56 +564,178 @@ section {
   }
 }
 
-.healthyFood {
+.healthyFood,
+.behaviorRules,
+.educationForms {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.5rem;
+}
+
+.healthyFood {
   scroll-margin-top: 2rem;
 }
 
-.healthyFoodHero {
+.healthyFoodHero,
+.behaviorRulesHero,
+.educationFormsHero {
   padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
   border-radius: 24px;
   text-align: center;
   color: #ffffff;
   background:
-    linear-gradient(125deg, rgba(49, 35, 43, 0.98) 0%, rgba(69, 45, 58, 0.96) 50%, rgba(93, 60, 74, 0.96) 100%);
-  box-shadow: 0 18px 40px rgba(35, 22, 29, 0.22);
+    radial-gradient(circle at top right, rgba(244, 198, 110, 0.24), transparent 28%),
+    linear-gradient(135deg, #103847 0%, #145463 58%, #1b7082 100%);
+  box-shadow: 0 18px 36px rgba(13, 42, 52, 0.18);
 
   h2 {
     margin: 0;
-    font-size: clamp(2.4rem, 5vw, 4.4rem);
-    line-height: 1.04;
+    font-size: clamp(2.2rem, 4.8vw, 4rem);
+    line-height: 1.06;
     font-weight: 700;
   }
 }
 
-.healthyFoodBody {
+.healthyFoodBody,
+.behaviorRulesBody,
+.educationFormsBody {
   display: grid;
-  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
   gap: 1.5rem;
   align-items: start;
 
-  @media (max-width: 860px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
 }
 
 .healthyFoodPoster,
-.healthyFoodContent {
-  padding: 1.35rem 1.5rem;
-  border: 1px solid #d9e2d2;
+.healthyFoodContent,
+.behaviorRulesPoster,
+.behaviorRulesContent article,
+.educationFormsPoster,
+.educationFormsContent article {
+  padding: 1.4rem 1.5rem;
+  border: 1px solid #d8e3e8;
   border-radius: 20px;
   background: #ffffff;
-  box-shadow: 0 14px 30px rgba(15, 38, 28, 0.08);
+  box-shadow: 0 14px 30px rgba(12, 38, 47, 0.08);
 }
 
-.healthyFoodPoster {
-  background: linear-gradient(180deg, #f5f2d7 0%, #eef0d6 100%);
+.healthyFoodPoster,
+.behaviorRulesPoster,
+.educationFormsPoster {
+  background: linear-gradient(180deg, #f7fbfd 0%, #eef5f8 100%);
 }
 
-.healthyFoodPosterEyebrow {
+.teachersPage {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.teachersHero {
+  padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
+  border-radius: 24px;
+  text-align: center;
+  color: #ffffff;
+  background:
+    linear-gradient(125deg, rgba(31, 56, 79, 0.98) 0%, rgba(38, 92, 108, 0.96) 50%, rgba(55, 126, 122, 0.95) 100%);
+  box-shadow: 0 18px 40px rgba(20, 45, 61, 0.2);
+
+  h2 {
+    margin: 0 0 0.7rem;
+    font-size: clamp(2.2rem, 4.8vw, 4rem);
+    line-height: 1.06;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 auto;
+    max-width: 760px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.teachersLead {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 780px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.teachersLeadCard,
+.teacherCard {
+  padding: 1.35rem 1.5rem;
+  border: 1px solid #d6e2e7;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(16, 36, 58, 0.08);
+}
+
+.teachersLeadEyebrow {
+  margin: 0 0 0.4rem;
+  color: #1f6f81;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.teachersLeadCard h3,
+.teacherCard h3 {
+  margin: 0 0 0.75rem;
+}
+
+.teachersLeadCard p:last-child,
+.teacherCard p {
+  margin: 0;
+}
+
+.teachersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.teacherCard {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f5fbfd 100%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: auto -30px -30px auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(49, 143, 161, 0.12) 0%, rgba(49, 143, 161, 0) 70%);
+    pointer-events: none;
+  }
+}
+
+.teacherPhotoWrap {
+  margin-bottom: 1rem;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #e4eef2;
+  box-shadow: 0 12px 24px rgba(20, 45, 61, 0.12);
+}
+
+.teacherPhoto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.healthyFoodPosterEyebrow,
+.behaviorRulesPosterEyebrow,
+.educationFormsPosterEyebrow {
   margin: 0 0 0.35rem;
-  color: #8d5a19;
+  color: #1f6f81;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -621,194 +743,53 @@ section {
 }
 
 .healthyFoodPoster h3,
-.healthyFoodContent h3 {
-  margin: 0 0 0.8rem;
-}
-
-.healthyFoodPoster p,
-.healthyFoodContent p {
-  margin: 0 0 0.85rem;
-}
-
-.healthyFoodPoster ul {
-  margin: 0;
-  padding-left: 1.1rem;
-}
-
-.healthyFoodPoster li {
-  margin-bottom: 0.45rem;
-}
-
-.healthyFoodContent h3 {
-  color: #6f9115;
-  font-size: 1.55rem;
-}
-
-.behaviorRules {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.behaviorRulesHero {
-  padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
-  border-radius: 24px;
-  text-align: center;
-  color: #ffffff;
-  background:
-    linear-gradient(125deg, rgba(34, 46, 66, 0.98) 0%, rgba(43, 67, 93, 0.96) 48%, rgba(57, 88, 111, 0.96) 100%);
-  box-shadow: 0 18px 40px rgba(23, 33, 48, 0.22);
-
-  h2 {
-    margin: 0;
-    font-size: clamp(2.2rem, 4.8vw, 4rem);
-    line-height: 1.06;
-    font-weight: 700;
-  }
-}
-
-.behaviorRulesBody {
-  display: grid;
-  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: start;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.behaviorRulesPoster,
-.behaviorRulesContent article {
-  padding: 1.35rem 1.5rem;
-  border: 1px solid #d7dfe7;
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 0 14px 30px rgba(16, 36, 58, 0.08);
-}
-
-.behaviorRulesPoster {
-  background: linear-gradient(180deg, #eef4fb 0%, #e7eef6 100%);
-}
-
-.behaviorRulesPosterEyebrow {
-  margin: 0 0 0.35rem;
-  color: #395f8a;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-
+.healthyFoodContent h3,
 .behaviorRulesPoster h3,
-.behaviorRulesContent h3 {
-  margin: 0 0 0.8rem;
-}
-
-.behaviorRulesPoster p {
-  margin: 0 0 0.85rem;
-}
-
-.behaviorRulesPoster ul,
-.behaviorRulesContent ul {
-  margin: 0;
-  padding-left: 1.15rem;
-}
-
-.behaviorRulesPoster li,
-.behaviorRulesContent li {
-  margin-bottom: 0.6rem;
-}
-
-.behaviorRulesContent {
-  display: grid;
-  gap: 1rem;
-}
-
-.behaviorRulesContent h3 {
-  color: #23486f;
-}
-
-.educationForms {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.educationFormsHero {
-  padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
-  border-radius: 24px;
-  text-align: center;
-  color: #ffffff;
-  background:
-    linear-gradient(125deg, rgba(33, 60, 49, 0.98) 0%, rgba(47, 88, 67, 0.96) 50%, rgba(74, 118, 86, 0.96) 100%);
-  box-shadow: 0 18px 40px rgba(22, 43, 34, 0.22);
-
-  h2 {
-    margin: 0;
-    font-size: clamp(2.2rem, 4.8vw, 4rem);
-    line-height: 1.06;
-    font-weight: 700;
-  }
-}
-
-.educationFormsBody {
-  display: grid;
-  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: start;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.educationFormsPoster,
-.educationFormsContent article {
-  padding: 1.35rem 1.5rem;
-  border: 1px solid #d9e4dc;
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 0 14px 30px rgba(19, 42, 31, 0.08);
-}
-
-.educationFormsPoster {
-  background: linear-gradient(180deg, #eef6f0 0%, #e4efe6 100%);
-}
-
-.educationFormsPosterEyebrow {
-  margin: 0 0 0.35rem;
-  color: #3a6d55;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-
+.behaviorRulesContent h3,
 .educationFormsPoster h3,
 .educationFormsContent h3 {
   margin: 0 0 0.8rem;
 }
 
+.healthyFoodPoster p,
+.healthyFoodContent p,
+.behaviorRulesPoster p,
+.behaviorRulesContent p,
 .educationFormsPoster p,
 .educationFormsContent p {
   margin: 0 0 0.85rem;
 }
 
-.educationFormsContent {
-  display: grid;
-  gap: 1rem;
-}
-
+.healthyFoodPoster ul,
+.behaviorRulesPoster ul,
+.behaviorRulesContent ul,
 .educationFormsContent ul {
   margin: 0;
   padding-left: 1.15rem;
 }
 
+.healthyFoodPoster li,
+.behaviorRulesPoster li,
+.behaviorRulesContent li,
 .educationFormsContent li {
   margin-bottom: 0.55rem;
 }
 
+.healthyFoodContent,
+.behaviorRulesContent,
+.educationFormsContent {
+  display: grid;
+  gap: 1rem;
+}
+
+.healthyFoodContent h3,
+.behaviorRulesContent h3,
 .educationFormsContent h3 {
-  color: #2f6650;
+  color: #155062;
+}
+
+.healthyFoodContent h3 {
+  font-size: 1.55rem;
 }
 
 #news {
