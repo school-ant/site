@@ -270,7 +270,8 @@ main {
 }
 
 .homeIntro,
-.homeGallerySection {
+.homeGallerySection,
+.homeFeatures {
   display: grid;
   gap: 1.5rem;
 }
@@ -352,45 +353,47 @@ main {
   }
 }
 
-.homeWeatherRow {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.homeWeather {
-  width: min(100%, 190px);
-  padding: 1rem 0.95rem;
-  border: 1px solid #d7e4ea;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at top right, rgba(244, 198, 110, 0.18), transparent 32%),
-    linear-gradient(180deg, #f9fcfe 0%, #eef5f8 100%);
-  box-shadow: 0 18px 36px rgba(12, 38, 47, 0.14);
-  color: #163743;
-  min-width: 0;
-
-  h3 {
-    margin: 0 0 0.25rem;
-    font-size: 1.2rem;
-    color: #103847;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  @media (max-width: 900px) {
-    width: 100%;
-  }
-}
-
-.homeWeatherEyebrow {
+.homeFeatureEyebrow {
   margin-bottom: 0.45rem;
   color: #1f6f81;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.78rem;
+}
+
+.homeFeaturesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.homeFeatureCard {
+  display: block;
+  min-height: 112px;
+  padding: 1rem 1.05rem;
+  border: 1px solid #d8e3e8;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4fafc 100%);
+  color: #173642;
+  box-shadow: 0 10px 24px rgba(12, 38, 47, 0.08);
+  text-decoration: none;
+
+  h3 {
+    margin: 0 0 0.55rem;
+    color: #103847;
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &.weather {
+    background:
+      radial-gradient(circle at top right, rgba(244, 198, 110, 0.18), transparent 32%),
+      linear-gradient(180deg, #ffffff 0%, #f4fafc 100%);
+  }
 }
 
 .homeWeatherTemp {
@@ -635,7 +638,8 @@ section {
 .healthyFood,
 .behaviorRules,
 .educationForms,
-.vacanciesPage {
+.vacanciesPage,
+.aiToolsPage {
   display: grid;
   gap: 1.5rem;
 }
@@ -647,7 +651,8 @@ section {
 .healthyFoodHero,
 .behaviorRulesHero,
 .educationFormsHero,
-.vacanciesHero {
+.vacanciesHero,
+.aiToolsHero {
   padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
   border-radius: 24px;
   text-align: center;
@@ -668,7 +673,8 @@ section {
 .healthyFoodBody,
 .behaviorRulesBody,
 .educationFormsBody,
-.vacanciesBody {
+.vacanciesBody,
+.aiToolsBody {
   display: grid;
   grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
   gap: 1.5rem;
@@ -686,7 +692,9 @@ section {
 .educationFormsPoster,
 .educationFormsContent article,
 .vacanciesPoster,
-.vacanciesContent article {
+.vacanciesContent article,
+.aiToolsPoster,
+.aiToolsContent article {
   padding: 1.4rem 1.5rem;
   border: 1px solid #d8e3e8;
   border-radius: 20px;
@@ -697,7 +705,8 @@ section {
 .healthyFoodPoster,
 .behaviorRulesPoster,
 .educationFormsPoster,
-.vacanciesPoster {
+.vacanciesPoster,
+.aiToolsPoster {
   background: linear-gradient(180deg, #f7fbfd 0%, #eef5f8 100%);
 }
 
@@ -808,7 +817,8 @@ section {
 .healthyFoodPosterEyebrow,
 .behaviorRulesPosterEyebrow,
 .educationFormsPosterEyebrow,
-.vacanciesPosterEyebrow {
+.vacanciesPosterEyebrow,
+.aiToolsPosterEyebrow {
   margin: 0 0 0.35rem;
   color: #1f6f81;
   font-weight: 700;
@@ -824,7 +834,9 @@ section {
 .educationFormsPoster h3,
 .educationFormsContent h3,
 .vacanciesPoster h3,
-.vacanciesContent h3 {
+.vacanciesContent h3,
+.aiToolsPoster h3,
+.aiToolsContent h3 {
   margin: 0 0 0.8rem;
 }
 
@@ -835,7 +847,9 @@ section {
 .educationFormsPoster p,
 .educationFormsContent p,
 .vacanciesPoster p,
-.vacanciesContent p {
+.vacanciesContent p,
+.aiToolsPoster p,
+.aiToolsContent p {
   margin: 0 0 0.85rem;
 }
 
@@ -844,7 +858,8 @@ section {
 .behaviorRulesContent ul,
 .educationFormsContent ul,
 .vacanciesPoster ul,
-.vacanciesContent ul {
+.vacanciesContent ul,
+.aiToolsPoster ul {
   margin: 0;
   padding-left: 1.15rem;
 }
@@ -854,14 +869,16 @@ section {
 .behaviorRulesContent li,
 .educationFormsContent li,
 .vacanciesPoster li,
-.vacanciesContent li {
+.vacanciesContent li,
+.aiToolsPoster li {
   margin-bottom: 0.55rem;
 }
 
 .healthyFoodContent,
 .behaviorRulesContent,
 .educationFormsContent,
-.vacanciesContent {
+.vacanciesContent,
+.aiToolsContent {
   display: grid;
   gap: 1rem;
 }
@@ -869,8 +886,48 @@ section {
 .healthyFoodContent h3,
 .behaviorRulesContent h3,
 .educationFormsContent h3,
-.vacanciesContent h3 {
+.vacanciesContent h3,
+.aiToolsContent h3 {
   color: #155062;
+}
+
+.aiToolType {
+  margin: 0 0 0.45rem;
+  color: #1f6f81;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.aiToolLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.65rem 1rem;
+    border: 1px solid #c9dfe8;
+    border-radius: 999px;
+    background: #f5fbfd;
+    color: #103847;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: #e0f2f9;
+      border-color: #2a7fa5;
+      box-shadow: 0 4px 14px rgba(42, 127, 165, 0.15);
+      outline: none;
+    }
+  }
 }
 
 .healthyFoodContent h3 {

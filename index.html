@@ -20,9 +20,9 @@
 			});
 		}
 	</script>
-	<script>
+		<script>
 		document.addEventListener("DOMContentLoaded", async () => {
-			const weatherCard = document.querySelector(".homeWeather");
+			const weatherCard = document.querySelector(".homeFeatureCard.weather");
 
 			if (!weatherCard) {
 				return;
@@ -125,19 +125,36 @@
 					<img src="images/top.jpg" alt="Шкільне життя Антипівської гімназії" loading="eager" decoding="async">
 				</figure>
 			</div>
-			<div class="homeWeatherRow">
-				<aside class="homeWeather" aria-label="Інформаційний блок погоди">
-					<p class="homeWeatherEyebrow">Погода</p>
-					<h3>Антипівка</h3>
-					<p class="homeWeatherTemp">--°C</p>
-					<p class="homeWeatherStatus">Оновлюємо дані...</p>
-					<div class="homeWeatherMeta">
-						<p data-weather-wind><strong>Вітер:</strong> --</p>
-						<p data-weather-humidity><strong>Вологість:</strong> --</p>
-						<p data-weather-rain><strong>Опади:</strong> --</p>
-					</div>
-				</aside>
-			</div>
+			<section class="homeFeatures" aria-labelledby="home-features-title">
+				<div class="homeSectionHead">
+					<p class="homeEyebrow">Швидкий доступ</p>
+					<h2 id="home-features-title">Корисні блоки</h2>
+					<p>Оперативна інформація та тематичні розділи, оформлені в єдиному стилі головної сторінки.</p>
+				</div>
+				<div class="homeFeaturesGrid">
+					<article class="homeFeatureCard weather" aria-label="Погода в Антипівці">
+						<p class="homeFeatureEyebrow">Погода</p>
+						<h3>Антипівка</h3>
+						<p class="homeWeatherTemp">--°C</p>
+						<p class="homeWeatherStatus">Оновлюємо дані...</p>
+						<div class="homeWeatherMeta">
+							<p data-weather-wind><strong>Вітер:</strong> --</p>
+							<p data-weather-humidity><strong>Вологість:</strong> --</p>
+							<p data-weather-rain><strong>Опади:</strong> --</p>
+						</div>
+					</article>
+					<a href="ai-tools.html" class="homeFeatureCard">
+						<p class="homeFeatureEyebrow">ШІ</p>
+						<h3>Розумні інструменти</h3>
+						<p>Добірка корисних сервісів штучного інтелекту для навчання, пошуку, текстів, дизайну та щоденних завдань.</p>
+					</a>
+					<article class="homeFeatureCard">
+						<p class="homeFeatureEyebrow">Розваги</p>
+						<h3>Активне дозвілля</h3>
+						<p>Шкільні події, творчі ініціативи, ігри та спільні заходи створюють живу атмосферу та дарують приємні спогади.</p>
+					</article>
+				</div>
+			</section>
 		</section>
 		<section class="homeGallerySection" aria-labelledby="home-gallery-title">
 			<div class="homeSectionHead">
