@@ -20,6 +20,78 @@
 			});
 		}
 	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", async () => {
+			const weatherCard = document.querySelector(".homeWeather");
+
+			if (!weatherCard) {
+				return;
+			}
+
+			const tempEl = weatherCard.querySelector(".homeWeatherTemp");
+			const statusEl = weatherCard.querySelector(".homeWeatherStatus");
+			const windEl = weatherCard.querySelector("[data-weather-wind]");
+			const humidityEl = weatherCard.querySelector("[data-weather-humidity]");
+			const rainEl = weatherCard.querySelector("[data-weather-rain]");
+
+			const weatherLabels = {
+				0: "Ясно",
+				1: "Переважно ясно",
+				2: "Мінлива хмарність",
+				3: "Хмарно",
+				45: "Туман",
+				48: "Паморозь",
+				51: "Легка мряка",
+				53: "Мряка",
+				55: "Сильна мряка",
+				56: "Переохолоджена мряка",
+				57: "Сильна переохолоджена мряка",
+				61: "Невеликий дощ",
+				63: "Дощ",
+				65: "Сильний дощ",
+				66: "Переохолоджений дощ",
+				67: "Сильний переохолоджений дощ",
+				71: "Невеликий сніг",
+				73: "Сніг",
+				75: "Сильний сніг",
+				77: "Снігові зерна",
+				80: "Короткочасний дощ",
+				81: "Дощові зливи",
+				82: "Сильні зливи",
+				85: "Снігові заряди",
+				86: "Сильні снігові заряди",
+				95: "Гроза",
+				96: "Гроза з градом",
+				99: "Сильна гроза з градом"
+			};
+
+			try {
+				const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=49.7252642&longitude=32.0648105&current=temperature_2m,relative_humidity_2m,precipitation_probability,weather_code,wind_speed_10m&timezone=auto&forecast_days=1");
+
+				if (!response.ok) {
+					throw new Error("Weather request failed");
+				}
+
+				const data = await response.json();
+				const current = data.current;
+
+				if (!current) {
+					throw new Error("Weather data missing");
+				}
+
+				tempEl.textContent = `${Math.round(current.temperature_2m)}°C`;
+				statusEl.textContent = weatherLabels[current.weather_code] || "Актуальна погода";
+				windEl.innerHTML = `<strong>Вітер:</strong> ${Math.round(current.wind_speed_10m)} м/с`;
+				humidityEl.innerHTML = `<strong>Вологість:</strong> ${Math.round(current.relative_humidity_2m)}%`;
+				rainEl.innerHTML = `<strong>Опади:</strong> ${Math.round(current.precipitation_probability)}%`;
+			} catch (error) {
+				statusEl.textContent = "Не вдалося оновити дані";
+				windEl.innerHTML = "<strong>Вітер:</strong> уточнюється";
+				humidityEl.innerHTML = "<strong>Вологість:</strong> уточнюється";
+				rainEl.innerHTML = "<strong>Опади:</strong> уточнюється";
+			}
+		});
+	</script>
 </head>
 
 <body>
@@ -52,6 +124,19 @@
 				<figure class="homeHeroFigure">
 					<img src="images/top.jpg" alt="Шкільне життя Антипівської гімназії" loading="eager" decoding="async">
 				</figure>
+			</div>
+			<div class="homeWeatherRow">
+				<aside class="homeWeather" aria-label="Інформаційний блок погоди">
+					<p class="homeWeatherEyebrow">Погода</p>
+					<h3>Антипівка</h3>
+					<p class="homeWeatherTemp">--°C</p>
+					<p class="homeWeatherStatus">Оновлюємо дані...</p>
+					<div class="homeWeatherMeta">
+						<p data-weather-wind><strong>Вітер:</strong> --</p>
+						<p data-weather-humidity><strong>Вологість:</strong> --</p>
+						<p data-weather-rain><strong>Опади:</strong> --</p>
+					</div>
+				</aside>
 			</div>
 		</section>
 		<section class="homeGallerySection" aria-labelledby="home-gallery-title">

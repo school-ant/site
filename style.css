@@ -352,6 +352,74 @@ main {
   }
 }
 
+.homeWeatherRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.homeWeather {
+  width: min(100%, 190px);
+  padding: 1rem 0.95rem;
+  border: 1px solid #d7e4ea;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(244, 198, 110, 0.18), transparent 32%),
+    linear-gradient(180deg, #f9fcfe 0%, #eef5f8 100%);
+  box-shadow: 0 18px 36px rgba(12, 38, 47, 0.14);
+  color: #163743;
+  min-width: 0;
+
+  h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.2rem;
+    color: #103847;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+}
+
+.homeWeatherEyebrow {
+  margin-bottom: 0.45rem;
+  color: #1f6f81;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.homeWeatherTemp {
+  margin-top: 0.35rem;
+  font-size: clamp(1.7rem, 2.2vw, 2.1rem);
+  line-height: 1;
+  font-weight: 700;
+  color: #103847;
+}
+
+.homeWeatherStatus {
+  margin-top: 0.45rem;
+  color: #4a6672;
+  font-weight: 600;
+}
+
+.homeWeatherMeta {
+  margin-top: 0.95rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #d7e4ea;
+  display: grid;
+  gap: 0.45rem;
+
+  p {
+    color: #33515c;
+    font-size: 0.88rem;
+  }
+}
+
 .homeGallery {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
