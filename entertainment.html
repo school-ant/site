@@ -13,6 +13,8 @@
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="manifest" href="site.webmanifest">
 	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script src="leaderboard-config.js"></script>
 </head>
 
 <body>
@@ -109,7 +111,7 @@
 	</div>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", () => {
+		document.addEventListener("DOMContentLoaded", async () => {
 			const leaderboardKey = "antypivka-entertainment-leaderboard";
 			const questionHistoryKey = "antypivka-entertainment-question-history";
 			const questionsPerRound = 10;
@@ -126,6 +128,13 @@
 			const restartButton = document.getElementById("quiz-restart");
 			const leaderboardEl = document.getElementById("leaderboard-list");
 			const quizCardEl = document.getElementById("quiz-card");
+			const remoteConfig = window.ENTERTAINMENT_SUPABASE;
+
+			let supabaseClient = null;
+
+			if (remoteConfig && window.supabase && remoteConfig.url && remoteConfig.key) {
+				supabaseClient = window.supabase.createClient(remoteConfig.url, remoteConfig.key);
+			}
 
 			function buildQuestionBank() {
 				const questions = [];
@@ -258,7 +267,7 @@
 				return copy;
 			}
 
-			function loadLeaderboard() {
+			function loadLeaderboardLocal() {
 				try {
 					return JSON.parse(localStorage.getItem(leaderboardKey)) || [];
 				} catch (error) {
@@ -266,8 +275,49 @@
 				}
 			}
 
-			function saveLeaderboard(entries) {
+			function saveLeaderboardLocal(entries) {
 				localStorage.setItem(leaderboardKey, JSON.stringify(entries));
+			}
+
+			async function loadLeaderboard() {
+				if (!supabaseClient) {
+					return loadLeaderboardLocal();
+				}
+
+				const { data, error } = await supabaseClient
+					.from(remoteConfig.table)
+					.select("name, score, created_at")
+					.order("score", { ascending: false })
+					.order("created_at", { ascending: true })
+					.limit(10);
+
+				if (error) {
+					return loadLeaderboardLocal();
+				}
+
+				return data || [];
+			}
+
+			async function saveLeaderboardEntry(entry) {
+				if (!supabaseClient) {
+					const entries = loadLeaderboardLocal();
+					entries.push(entry);
+					entries.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
+					saveLeaderboardLocal(entries.slice(0, 10));
+					return;
+				}
+
+				const { error } = await supabaseClient.from(remoteConfig.table).insert({
+					name: entry.name,
+					score: entry.score
+				});
+
+				if (error) {
+					const entries = loadLeaderboardLocal();
+					entries.push(entry);
+					entries.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
+					saveLeaderboardLocal(entries.slice(0, 10));
+				}
 			}
 
 			function loadQuestionHistory() {
@@ -299,8 +349,8 @@
 				return selected;
 			}
 
-			function renderLeaderboard() {
-				const entries = loadLeaderboard();
+			async function renderLeaderboard() {
+				const entries = await loadLeaderboard();
 				leaderboardEl.innerHTML = "";
 
 				if (!entries.length) {
@@ -383,7 +433,7 @@
 				renderQuestion();
 			}
 
-			nicknameForm.addEventListener("submit", (event) => {
+			nicknameForm.addEventListener("submit", async (event) => {
 				event.preventDefault();
 
 				if (saved || !finished) {
@@ -397,16 +447,14 @@
 					return;
 				}
 
-				const entries = loadLeaderboard();
-				entries.push({
+				const entry = {
 					name: nickname,
 					score,
 					timestamp: Date.now()
-				});
+				};
 
-				entries.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
-				saveLeaderboard(entries.slice(0, 10));
-				renderLeaderboard();
+				await saveLeaderboardEntry(entry);
+				await renderLeaderboard();
 
 				saved = true;
 				nicknameForm.hidden = true;
@@ -415,7 +463,7 @@
 
 			restartButton.addEventListener("click", restartQuiz);
 
-			renderLeaderboard();
+			await renderLeaderboard();
 			restartQuiz();
 		});
 	</script>

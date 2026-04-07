@@ -1,0 +1,1 @@
+window.ENTERTAINMENT_SUPABASE = null;
