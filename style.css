@@ -566,7 +566,8 @@ section {
 
 .healthyFood,
 .behaviorRules,
-.educationForms {
+.educationForms,
+.vacanciesPage {
   display: grid;
   gap: 1.5rem;
 }
@@ -577,7 +578,8 @@ section {
 
 .healthyFoodHero,
 .behaviorRulesHero,
-.educationFormsHero {
+.educationFormsHero,
+.vacanciesHero {
   padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
   border-radius: 24px;
   text-align: center;
@@ -597,7 +599,8 @@ section {
 
 .healthyFoodBody,
 .behaviorRulesBody,
-.educationFormsBody {
+.educationFormsBody,
+.vacanciesBody {
   display: grid;
   grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
   gap: 1.5rem;
@@ -613,7 +616,9 @@ section {
 .behaviorRulesPoster,
 .behaviorRulesContent article,
 .educationFormsPoster,
-.educationFormsContent article {
+.educationFormsContent article,
+.vacanciesPoster,
+.vacanciesContent article {
   padding: 1.4rem 1.5rem;
   border: 1px solid #d8e3e8;
   border-radius: 20px;
@@ -623,7 +628,8 @@ section {
 
 .healthyFoodPoster,
 .behaviorRulesPoster,
-.educationFormsPoster {
+.educationFormsPoster,
+.vacanciesPoster {
   background: linear-gradient(180deg, #f7fbfd 0%, #eef5f8 100%);
 }
 
@@ -733,7 +739,8 @@ section {
 
 .healthyFoodPosterEyebrow,
 .behaviorRulesPosterEyebrow,
-.educationFormsPosterEyebrow {
+.educationFormsPosterEyebrow,
+.vacanciesPosterEyebrow {
   margin: 0 0 0.35rem;
   color: #1f6f81;
   font-weight: 700;
@@ -747,7 +754,9 @@ section {
 .behaviorRulesPoster h3,
 .behaviorRulesContent h3,
 .educationFormsPoster h3,
-.educationFormsContent h3 {
+.educationFormsContent h3,
+.vacanciesPoster h3,
+.vacanciesContent h3 {
   margin: 0 0 0.8rem;
 }
 
@@ -756,14 +765,18 @@ section {
 .behaviorRulesPoster p,
 .behaviorRulesContent p,
 .educationFormsPoster p,
-.educationFormsContent p {
+.educationFormsContent p,
+.vacanciesPoster p,
+.vacanciesContent p {
   margin: 0 0 0.85rem;
 }
 
 .healthyFoodPoster ul,
 .behaviorRulesPoster ul,
 .behaviorRulesContent ul,
-.educationFormsContent ul {
+.educationFormsContent ul,
+.vacanciesPoster ul,
+.vacanciesContent ul {
   margin: 0;
   padding-left: 1.15rem;
 }
@@ -771,20 +784,24 @@ section {
 .healthyFoodPoster li,
 .behaviorRulesPoster li,
 .behaviorRulesContent li,
-.educationFormsContent li {
+.educationFormsContent li,
+.vacanciesPoster li,
+.vacanciesContent li {
   margin-bottom: 0.55rem;
 }
 
 .healthyFoodContent,
 .behaviorRulesContent,
-.educationFormsContent {
+.educationFormsContent,
+.vacanciesContent {
   display: grid;
   gap: 1rem;
 }
 
 .healthyFoodContent h3,
 .behaviorRulesContent h3,
-.educationFormsContent h3 {
+.educationFormsContent h3,
+.vacanciesContent h3 {
   color: #155062;
 }
 
