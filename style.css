@@ -642,7 +642,8 @@ section {
 .behaviorRules,
 .educationForms,
 .vacanciesPage,
-.aiToolsPage {
+.aiToolsPage,
+.entertainmentPage {
   display: grid;
   gap: 1.5rem;
 }
@@ -655,7 +656,8 @@ section {
 .behaviorRulesHero,
 .educationFormsHero,
 .vacanciesHero,
-.aiToolsHero {
+.aiToolsHero,
+.entertainmentHero {
   padding: clamp(2.75rem, 5vw, 4.5rem) 1.5rem;
   border-radius: 24px;
   text-align: center;
@@ -677,7 +679,8 @@ section {
 .behaviorRulesBody,
 .educationFormsBody,
 .vacanciesBody,
-.aiToolsBody {
+.aiToolsBody,
+.entertainmentBody {
   display: grid;
   grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
   gap: 1.5rem;
@@ -697,7 +700,11 @@ section {
 .vacanciesPoster,
 .vacanciesContent article,
 .aiToolsPoster,
-.aiToolsContent article {
+.aiToolsContent article,
+.entertainmentPoster,
+.entertainmentGame,
+.entertainmentLeaderboard,
+.entertainmentMiniCard {
   padding: 1.4rem 1.5rem;
   border: 1px solid #d8e3e8;
   border-radius: 20px;
@@ -709,7 +716,8 @@ section {
 .behaviorRulesPoster,
 .educationFormsPoster,
 .vacanciesPoster,
-.aiToolsPoster {
+.aiToolsPoster,
+.entertainmentPoster {
   background: linear-gradient(180deg, #f7fbfd 0%, #eef5f8 100%);
 }
 
@@ -821,7 +829,8 @@ section {
 .behaviorRulesPosterEyebrow,
 .educationFormsPosterEyebrow,
 .vacanciesPosterEyebrow,
-.aiToolsPosterEyebrow {
+.aiToolsPosterEyebrow,
+.entertainmentPosterEyebrow {
   margin: 0 0 0.35rem;
   color: #1f6f81;
   font-weight: 700;
@@ -839,7 +848,11 @@ section {
 .vacanciesPoster h3,
 .vacanciesContent h3,
 .aiToolsPoster h3,
-.aiToolsContent h3 {
+.aiToolsContent h3,
+.entertainmentPoster h3,
+.entertainmentGame h3,
+.entertainmentLeaderboard h3,
+.entertainmentMiniCard h3 {
   margin: 0 0 0.8rem;
 }
 
@@ -852,7 +865,11 @@ section {
 .vacanciesPoster p,
 .vacanciesContent p,
 .aiToolsPoster p,
-.aiToolsContent p {
+.aiToolsContent p,
+.entertainmentPoster p,
+.entertainmentGame p,
+.entertainmentLeaderboard p,
+.entertainmentMiniCard p {
   margin: 0 0 0.85rem;
 }
 
@@ -862,7 +879,8 @@ section {
 .educationFormsContent ul,
 .vacanciesPoster ul,
 .vacanciesContent ul,
-.aiToolsPoster ul {
+.aiToolsPoster ul,
+.entertainmentPoster ul {
   margin: 0;
   padding-left: 1.15rem;
 }
@@ -873,7 +891,8 @@ section {
 .educationFormsContent li,
 .vacanciesPoster li,
 .vacanciesContent li,
-.aiToolsPoster li {
+.aiToolsPoster li,
+.entertainmentPoster li {
   margin-bottom: 0.55rem;
 }
 
@@ -881,7 +900,8 @@ section {
 .behaviorRulesContent,
 .educationFormsContent,
 .vacanciesContent,
-.aiToolsContent {
+.aiToolsContent,
+.entertainmentContent {
   display: grid;
   gap: 1rem;
 }
@@ -890,8 +910,215 @@ section {
 .behaviorRulesContent h3,
 .educationFormsContent h3,
 .vacanciesContent h3,
-.aiToolsContent h3 {
+.aiToolsContent h3,
+.entertainmentContent h3 {
   color: #155062;
+}
+
+.entertainmentContent {
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  align-items: start;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.entertainmentGameHead p:last-child,
+.entertainmentMiniCard p:last-child,
+.entertainmentLeaderboard p:last-child {
+  margin-bottom: 0;
+}
+
+.entertainmentTag,
+.quizStatLabel {
+  display: inline-block;
+  margin: 0 0 0.5rem;
+  color: #1f6f81;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.quizStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.quizStat {
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: #f3f8fa;
+  border: 1px solid #d8e3e8;
+
+  strong {
+    display: block;
+    font-size: 1.2rem;
+    color: #103847;
+  }
+}
+
+.quizCard {
+  display: grid;
+  gap: 1rem;
+}
+
+.quizQuestion {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: #103847;
+  font-weight: 700;
+}
+
+.quizAnswers {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.quizAnswerButton,
+.quizPrimaryButton,
+.quizSecondaryButton {
+  appearance: none;
+  width: 100%;
+  border-radius: 16px;
+  font: inherit;
+}
+
+.quizAnswerButton {
+  padding: 0.95rem 1rem;
+  border: 1px solid #d8e3e8;
+  background: linear-gradient(180deg, #ffffff 0%, #f4fafc 100%);
+  color: #173642;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(12, 38, 47, 0.06);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+    border-color: #8cb6c3;
+    box-shadow: 0 12px 22px rgba(12, 38, 47, 0.1);
+    outline: none;
+  }
+}
+
+.quizResult {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.quizResult h4 {
+  margin: 0;
+  color: #103847;
+  font-size: 1.35rem;
+}
+
+.quizResultScore {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1;
+  font-weight: 700;
+  color: #155062;
+}
+
+.quizNicknameForm {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.quizNicknameForm label {
+  font-weight: 600;
+  color: #2f4853;
+}
+
+.quizNicknameForm input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid #c9dbe3;
+  border-radius: 14px;
+  font: inherit;
+  color: #173642;
+  background: #ffffff;
+}
+
+.quizNicknameForm input:focus {
+  outline: 2px solid rgba(42, 127, 165, 0.22);
+  border-color: #2a7fa5;
+}
+
+.quizResultActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.quizPrimaryButton,
+.quizSecondaryButton {
+  width: auto;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.quizPrimaryButton {
+  border: 1px solid #1f6f81;
+  background: linear-gradient(135deg, #155062 0%, #1f6f81 60%, #2f8a96 100%);
+  color: #ffffff;
+}
+
+.quizSecondaryButton {
+  border: 1px solid #c9dbe3;
+  background: #f6fbfd;
+  color: #103847;
+}
+
+.quizSavedMessage {
+  margin: 0;
+  color: #2b7d59;
+  font-weight: 700;
+}
+
+.entertainmentSideGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.leaderboardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.leaderboardList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 14px;
+  background: #f5fbfd;
+  border: 1px solid #d8e3e8;
+  color: #173642;
+}
+
+.leaderboardList strong {
+  color: #155062;
+  white-space: nowrap;
+}
+
+.miniAnswer {
+  margin: 0;
+  color: #4f6772;
+  font-weight: 600;
 }
 
 .aiToolType {

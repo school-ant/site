@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Розваги, ігри та головоломки для дітей і дорослих">
+	<meta name="theme-color" content="#333333">
+	<title>Розваги - Антипівська гімназія</title>
+	<link rel="icon" href="images/favicon.ico" sizes="any">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<header class="siteHeaderBar" role="banner">
+		<a href="index.html" aria-label="Перейти на головну сторінку">
+			<img src="images/logo.avif" alt="Логотип школи" width="96" height="96" loading="eager" decoding="async">
+			<hgroup>
+				<h1>Антипівська гімназія</h1>
+				<h2>з дошкільним підрозділом</h2>
+			</hgroup>
+		</a>
+		<nav aria-label="Основна навігація">
+			<ul>
+				<li><a href="index.html">Головна</a></li>
+				<li><a href="about.html">Про школу</a></li>
+				<li><a href="news.html">Новини</a></li>
+				<li><a href="transparency.html">Прозорість</a></li>
+				<li><a href="contact.html">Контакти</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="entertainmentPage">
+			<div class="entertainmentHero">
+				<h2>Розваги та головоломки</h2>
+			</div>
+			<div class="entertainmentBody">
+				<aside class="entertainmentPoster">
+					<p class="entertainmentPosterEyebrow">Для дітей і дорослих</p>
+					<h3>Один розділ для відпочинку, логіки й азарту</h3>
+					<p>Тут зібрано універсальні розваги, у які цікаво грати і школярам, і дорослим. Головна гра розділу - велика вікторина з балами та таблицею рекордів.</p>
+					<ul>
+						<li>пройдіть вікторину та дізнайтесь свій результат;</li>
+						<li>впишіть свій нік після завершення;</li>
+						<li>потрапте до таблиці кращих гравців;</li>
+						<li>отримуйте щоразу нову добірку запитань із великого банку.</li>
+					</ul>
+				</aside>
+				<div class="entertainmentContent">
+					<article class="entertainmentGame">
+						<div class="entertainmentGameHead">
+							<p class="entertainmentTag">Гра тижня</p>
+							<h3>Швидка вікторина</h3>
+							<p>Кожне проходження обирає 10 випадкових запитань із банку понад 200 завдань на уважність, логіку, шкільні знання та кмітливість.</p>
+						</div>
+						<div class="quizStats">
+							<div class="quizStat">
+								<span class="quizStatLabel">Питання</span>
+								<strong id="quiz-progress">1 / 10</strong>
+							</div>
+							<div class="quizStat">
+								<span class="quizStatLabel">Бали</span>
+								<strong id="quiz-score">0</strong>
+							</div>
+						</div>
+						<div class="quizCard" id="quiz-card">
+							<p class="quizQuestion" id="quiz-question">Завантажуємо запитання...</p>
+							<div class="quizAnswers" id="quiz-answers"></div>
+						</div>
+						<div class="quizResult" id="quiz-result" hidden>
+							<h4>Ваш результат</h4>
+							<p class="quizResultScore" id="quiz-result-score">0 балів</p>
+							<p id="quiz-result-text">Вікторину завершено.</p>
+							<form class="quizNicknameForm" id="quiz-nickname-form">
+								<label for="quiz-nickname">Вкажіть свій нік для таблиці рекордів</label>
+								<input id="quiz-nickname" name="nickname" type="text" maxlength="24" placeholder="Наприклад, Розумник_7" required>
+								<div class="quizResultActions">
+									<button type="submit" class="quizPrimaryButton">Зберегти результат</button>
+									<button type="button" class="quizSecondaryButton" id="quiz-restart">Спробувати ще раз</button>
+								</div>
+							</form>
+							<p class="quizSavedMessage" id="quiz-saved-message" hidden>Результат додано до таблиці лідерів.</p>
+						</div>
+					</article>
+					<div class="entertainmentSideGrid">
+						<article class="entertainmentLeaderboard">
+							<p class="entertainmentTag">Рейтинг</p>
+							<h3>Кращі результати</h3>
+							<ol class="leaderboardList" id="leaderboard-list">
+								<li>Поки що немає результатів. Станьте першим гравцем.</li>
+							</ol>
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<div class="siteFooter">
+		<footer>
+			<p>&copy; <span id="currentYear">2026</span> Шкільний сайт. Усі права захищено.</p>
+			<script>document.getElementById("currentYear").textContent = new Date().getFullYear();</script>
+		</footer>
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const leaderboardKey = "antypivka-entertainment-leaderboard";
+			const questionHistoryKey = "antypivka-entertainment-question-history";
+			const questionsPerRound = 10;
+			const progressEl = document.getElementById("quiz-progress");
+			const scoreEl = document.getElementById("quiz-score");
+			const questionEl = document.getElementById("quiz-question");
+			const answersEl = document.getElementById("quiz-answers");
+			const resultEl = document.getElementById("quiz-result");
+			const resultScoreEl = document.getElementById("quiz-result-score");
+			const resultTextEl = document.getElementById("quiz-result-text");
+			const nicknameForm = document.getElementById("quiz-nickname-form");
+			const nicknameInput = document.getElementById("quiz-nickname");
+			const savedMessageEl = document.getElementById("quiz-saved-message");
+			const restartButton = document.getElementById("quiz-restart");
+			const leaderboardEl = document.getElementById("leaderboard-list");
+			const quizCardEl = document.getElementById("quiz-card");
+
+			function buildQuestionBank() {
+				const questions = [];
+
+				function addQuestion(question, answers, correct) {
+					questions.push({ question, answers, correct });
+				}
+
+				function addMathSet() {
+					for (let a = 2; a <= 15; a += 1) {
+						for (let b = 2; b <= 6; b += 1) {
+							const correct = a * b;
+							addQuestion(
+								`Скільки буде ${a} x ${b}?`,
+								[
+									String(correct),
+									String(correct + a),
+									String(correct - b),
+									String(correct + b + 2)
+								],
+								0
+							);
+						}
+					}
+
+					for (let a = 12; a <= 45; a += 3) {
+						const b = (a % 7) + 4;
+						const correct = a + b;
+						addQuestion(
+							`Скільки буде ${a} + ${b}?`,
+							[
+								String(correct),
+								String(correct - 2),
+								String(correct + 3),
+								String(correct + 5)
+							],
+							0
+						);
+					}
+
+					for (let a = 20; a <= 65; a += 5) {
+						const b = (a % 9) + 6;
+						const correct = a - b;
+						addQuestion(
+							`Скільки буде ${a} - ${b}?`,
+							[
+								String(correct + 4),
+								String(correct),
+								String(correct - 3),
+								String(correct + 1)
+							],
+							1
+						);
+					}
+				}
+
+				function addSequenceSet() {
+					const sequences = [
+						["2, 4, 6, 8, ...", ["10", "12", "14", "16"], 0],
+						["3, 6, 9, 12, ...", ["13", "14", "15", "16"], 2],
+						["5, 10, 15, 20, ...", ["22", "25", "30", "35"], 1],
+						["1, 4, 7, 10, ...", ["12", "13", "14", "15"], 1],
+						["10, 20, 30, 40, ...", ["45", "50", "60", "70"], 1],
+						["2, 4, 8, 16, ...", ["20", "24", "32", "64"], 2],
+						["81, 27, 9, 3, ...", ["1", "2", "6", "9"], 0],
+						["100, 90, 80, 70, ...", ["50", "55", "60", "65"], 2],
+						["7, 14, 21, 28, ...", ["32", "35", "36", "42"], 1],
+						["1, 1, 2, 3, 5, ...", ["6", "7", "8", "9"], 2]
+					];
+
+					for (let i = 0; i < 12; i += 1) {
+						sequences.forEach((item) => {
+							addQuestion(`Продовжіть ряд: ${item[0]}`, item[1], item[2]);
+						});
+					}
+				}
+
+				function addGeneralKnowledgeSet() {
+					const items = [
+						["Яка планета відома як Червона планета?", ["Марс", "Венера", "Юпітер", "Сатурн"], 0],
+						["Який океан є найбільшим на Землі?", ["Атлантичний", "Індійський", "Північний Льодовитий", "Тихий"], 3],
+						["Скільки сторін у трикутника?", ["2", "3", "4", "5"], 1],
+						["Яка пора року настає після весни?", ["Зима", "Осінь", "Літо", "Січень"], 2],
+						["Яке число є парним?", ["13", "17", "22", "29"], 2],
+						["Що потрібно рослині для росту?", ["Світло і вода", "Лише тінь", "Тільки холод", "Лише пісок"], 0],
+						["Яка мова використовується для оформлення сторінок сайту?", ["HTML", "CSS", "Python", "Excel"], 1],
+						["Скільки днів у тижні?", ["5", "6", "7", "8"], 2],
+						["Який колір утворюють синій і жовтий?", ["Фіолетовий", "Зелений", "Червоний", "Сірий"], 1],
+						["Яка тварина найчастіше вважається символом мудрості?", ["Сова", "Заєць", "Лисиця", "Кіт"], 0],
+						["Який місяць має найменшу кількість днів?", ["Січень", "Лютий", "Березень", "Квітень"], 1],
+						["Що вимірюють у кілограмах?", ["Час", "Довжину", "Масу", "Температуру"], 2],
+						["Яка зірка є найближчою до Землі?", ["Сіріус", "Сонце", "Полярна", "Вега"], 1],
+						["Скільки хвилин в одній годині?", ["30", "45", "60", "90"], 2],
+						["Що з цього є фруктом?", ["Морква", "Яблуко", "Картопля", "Цибуля"], 1],
+						["Який інструмент показує напрямок сторін світу?", ["Термометр", "Компас", "Лінійка", "Барометр"], 1],
+						["Яка пташка не літає?", ["Горобець", "Орел", "Пінгвін", "Ластівка"], 2],
+						["Яка фігура має чотири рівні сторони?", ["Трикутник", "Коло", "Квадрат", "Овал"], 2],
+						["Скільки кольорів має веселка?", ["5", "6", "7", "8"], 2],
+						["Яка тварина дає молоко?", ["Курка", "Корова", "Бджола", "Качка"], 1]
+					];
+
+					for (let i = 0; i < 3; i += 1) {
+						items.forEach((item) => addQuestion(item[0], item[1], item[2]));
+					}
+				}
+
+				addMathSet();
+				addSequenceSet();
+				addGeneralKnowledgeSet();
+
+				return questions.map((item, index) => ({ ...item, id: index + 1 }));
+			}
+
+			const allQuestions = buildQuestionBank();
+
+			let activeQuestions = [];
+			let currentIndex = 0;
+			let score = 0;
+			let finished = false;
+			let saved = false;
+
+			function shuffleArray(items) {
+				const copy = [...items];
+
+				for (let i = copy.length - 1; i > 0; i -= 1) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[copy[i], copy[j]] = [copy[j], copy[i]];
+				}
+
+				return copy;
+			}
+
+			function loadLeaderboard() {
+				try {
+					return JSON.parse(localStorage.getItem(leaderboardKey)) || [];
+				} catch (error) {
+					return [];
+				}
+			}
+
+			function saveLeaderboard(entries) {
+				localStorage.setItem(leaderboardKey, JSON.stringify(entries));
+			}
+
+			function loadQuestionHistory() {
+				try {
+					return JSON.parse(localStorage.getItem(questionHistoryKey)) || [];
+				} catch (error) {
+					return [];
+				}
+			}
+
+			function saveQuestionHistory(ids) {
+				localStorage.setItem(questionHistoryKey, JSON.stringify(ids));
+			}
+
+			function pickQuestionSet() {
+				const history = loadQuestionHistory();
+				const recentLimit = Math.min(120, allQuestions.length - questionsPerRound);
+				const recentIds = new Set(history.slice(-recentLimit));
+				let pool = allQuestions.filter((item) => !recentIds.has(item.id));
+
+				if (pool.length < questionsPerRound) {
+					pool = [...allQuestions];
+				}
+
+				const selected = shuffleArray(pool).slice(0, questionsPerRound);
+				const newHistory = [...history, ...selected.map((item) => item.id)].slice(-180);
+				saveQuestionHistory(newHistory);
+
+				return selected;
+			}
+
+			function renderLeaderboard() {
+				const entries = loadLeaderboard();
+				leaderboardEl.innerHTML = "";
+
+				if (!entries.length) {
+					const emptyItem = document.createElement("li");
+					emptyItem.textContent = "Поки що немає результатів. Станьте першим гравцем.";
+					leaderboardEl.appendChild(emptyItem);
+					return;
+				}
+
+				entries.slice(0, 10).forEach((entry, index) => {
+					const item = document.createElement("li");
+					item.innerHTML = `<span>${index + 1}. ${entry.name}</span><strong>${entry.score} б.</strong>`;
+					leaderboardEl.appendChild(item);
+				});
+			}
+
+			function renderQuestion() {
+				const item = activeQuestions[currentIndex];
+				progressEl.textContent = `${currentIndex + 1} / ${activeQuestions.length}`;
+				scoreEl.textContent = String(score);
+				questionEl.textContent = item.question;
+				answersEl.innerHTML = "";
+
+				item.answers.forEach((answer, index) => {
+					const button = document.createElement("button");
+					button.type = "button";
+					button.className = "quizAnswerButton";
+					button.textContent = answer;
+					button.addEventListener("click", () => handleAnswer(index));
+					answersEl.appendChild(button);
+				});
+			}
+
+			function handleAnswer(index) {
+				if (finished) {
+					return;
+				}
+
+				if (index === activeQuestions[currentIndex].correct) {
+					score += 10;
+				}
+
+				currentIndex += 1;
+
+				if (currentIndex >= activeQuestions.length) {
+					finished = true;
+					showResult();
+					return;
+				}
+
+				renderQuestion();
+			}
+
+			function showResult() {
+				quizCardEl.hidden = true;
+				resultEl.hidden = false;
+				scoreEl.textContent = String(score);
+				resultScoreEl.textContent = `${score} балів із ${activeQuestions.length * 10}`;
+
+				if (score >= 80) {
+					resultTextEl.textContent = "Чудовий результат. Ви точно в хорошій формі.";
+				} else if (score >= 50) {
+					resultTextEl.textContent = "Дуже добре. Ще одна спроба і можна боротися за вершину рейтингу.";
+				} else {
+					resultTextEl.textContent = "Початок покладено. Спробуйте ще раз і покращіть свій результат.";
+				}
+			}
+
+			function restartQuiz() {
+				activeQuestions = pickQuestionSet();
+				currentIndex = 0;
+				score = 0;
+				finished = false;
+				saved = false;
+				quizCardEl.hidden = false;
+				resultEl.hidden = true;
+				nicknameForm.hidden = false;
+				nicknameInput.value = "";
+				savedMessageEl.hidden = true;
+				renderQuestion();
+			}
+
+			nicknameForm.addEventListener("submit", (event) => {
+				event.preventDefault();
+
+				if (saved || !finished) {
+					return;
+				}
+
+				const nickname = nicknameInput.value.trim();
+
+				if (!nickname) {
+					nicknameInput.focus();
+					return;
+				}
+
+				const entries = loadLeaderboard();
+				entries.push({
+					name: nickname,
+					score,
+					timestamp: Date.now()
+				});
+
+				entries.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
+				saveLeaderboard(entries.slice(0, 10));
+				renderLeaderboard();
+
+				saved = true;
+				nicknameForm.hidden = true;
+				savedMessageEl.hidden = false;
+			});
+
+			restartButton.addEventListener("click", restartQuiz);
+
+			renderLeaderboard();
+			restartQuiz();
+		});
+	</script>
+</body>
+
+</html>
