@@ -97,6 +97,20 @@
 								<li>Поки що немає результатів. Станьте першим гравцем.</li>
 							</ol>
 						</article>
+						<article class="entertainmentMiniGame">
+							<p class="entertainmentTag">Мінігра</p>
+							<h3>Вгадай число</h3>
+							<p>Комп'ютер загадав число від 1 до 20. Спробуйте відгадати його за мінімум спроб.</p>
+							<form class="miniGameForm" id="guess-form">
+								<input id="guess-input" type="number" min="1" max="20" placeholder="Введіть число від 1 до 20" required>
+								<div class="miniGameActions">
+									<button type="submit" class="quizPrimaryButton">Перевірити</button>
+									<button type="button" class="quizSecondaryButton" id="guess-reset">Нова гра</button>
+								</div>
+							</form>
+							<p class="miniGameStatus" id="guess-status">Гру розпочато. У вас все вийде.</p>
+							<p class="miniGameMeta" id="guess-attempts">Спроб: 0</p>
+						</article>
 					</div>
 				</div>
 			</div>
@@ -128,6 +142,11 @@
 			const restartButton = document.getElementById("quiz-restart");
 			const leaderboardEl = document.getElementById("leaderboard-list");
 			const quizCardEl = document.getElementById("quiz-card");
+			const guessForm = document.getElementById("guess-form");
+			const guessInput = document.getElementById("guess-input");
+			const guessResetButton = document.getElementById("guess-reset");
+			const guessStatusEl = document.getElementById("guess-status");
+			const guessAttemptsEl = document.getElementById("guess-attempts");
 			const remoteConfig = window.ENTERTAINMENT_SUPABASE;
 
 			let supabaseClient = null;
@@ -255,6 +274,8 @@
 			let score = 0;
 			let finished = false;
 			let saved = false;
+			let secretNumber = Math.floor(Math.random() * 20) + 1;
+			let guessAttempts = 0;
 
 			function shuffleArray(items) {
 				const copy = [...items];
@@ -462,6 +483,39 @@
 			});
 
 			restartButton.addEventListener("click", restartQuiz);
+
+			guessForm.addEventListener("submit", (event) => {
+				event.preventDefault();
+
+				const value = Number(guessInput.value);
+
+				if (!Number.isInteger(value) || value < 1 || value > 20) {
+					guessStatusEl.textContent = "Введіть ціле число від 1 до 20.";
+					return;
+				}
+
+				guessAttempts += 1;
+				guessAttemptsEl.textContent = `Спроб: ${guessAttempts}`;
+
+				if (value === secretNumber) {
+					guessStatusEl.textContent = `Вітаємо! Ви відгадали число ${secretNumber}.`;
+					return;
+				}
+
+				if (value < secretNumber) {
+					guessStatusEl.textContent = "Загадане число більше.";
+				} else {
+					guessStatusEl.textContent = "Загадане число менше.";
+				}
+			});
+
+			guessResetButton.addEventListener("click", () => {
+				secretNumber = Math.floor(Math.random() * 20) + 1;
+				guessAttempts = 0;
+				guessInput.value = "";
+				guessStatusEl.textContent = "Нову гру розпочато. Спробуйте відгадати число.";
+				guessAttemptsEl.textContent = "Спроб: 0";
+			});
 
 			await renderLeaderboard();
 			restartQuiz();

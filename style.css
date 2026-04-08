@@ -704,7 +704,8 @@ section {
 .entertainmentPoster,
 .entertainmentGame,
 .entertainmentLeaderboard,
-.entertainmentMiniCard {
+.entertainmentMiniCard,
+.entertainmentMiniGame {
   padding: 1.4rem 1.5rem;
   border: 1px solid #d8e3e8;
   border-radius: 20px;
@@ -852,7 +853,8 @@ section {
 .entertainmentPoster h3,
 .entertainmentGame h3,
 .entertainmentLeaderboard h3,
-.entertainmentMiniCard h3 {
+.entertainmentMiniCard h3,
+.entertainmentMiniGame h3 {
   margin: 0 0 0.8rem;
 }
 
@@ -869,7 +871,8 @@ section {
 .entertainmentPoster p,
 .entertainmentGame p,
 .entertainmentLeaderboard p,
-.entertainmentMiniCard p {
+.entertainmentMiniCard p,
+.entertainmentMiniGame p {
   margin: 0 0 0.85rem;
 }
 
@@ -926,7 +929,8 @@ section {
 
 .entertainmentGameHead p:last-child,
 .entertainmentMiniCard p:last-child,
-.entertainmentLeaderboard p:last-child {
+.entertainmentLeaderboard p:last-child,
+.entertainmentMiniGame p:last-child {
   margin-bottom: 0;
 }
 
@@ -1089,6 +1093,44 @@ section {
   display: grid;
   gap: 1rem;
 }
+
+.miniGameForm {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.miniGameForm input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid #c9dbe3;
+  border-radius: 14px;
+  font: inherit;
+  color: #173642;
+  background: #ffffff;
+}
+
+.miniGameForm input:focus {
+  outline: 2px solid rgba(42, 127, 165, 0.22);
+  border-color: #2a7fa5;
+}
+
+.miniGameActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.miniGameStatus {
+  color: #103847;
+  font-weight: 600;
+}
+
+.miniGameMeta {
+  color: #4f6772;
+  font-size: 0.92rem;
+}
+
 
 .leaderboardList {
   list-style: none;
