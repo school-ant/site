@@ -950,6 +950,38 @@ section {
   }
 }
 
+.foodGallery {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.foodGallery figure {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #eef4f7;
+  box-shadow: 0 10px 22px rgba(12, 38, 47, 0.1);
+}
+
+.foodGallery img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+@media (max-width: 760px) {
+  .foodGallery {
+    grid-template-columns: 1fr;
+  }
+
+  .foodGallery img {
+    height: 220px;
+  }
+}
+
 .entertainmentContent {
   grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
   align-items: start;
