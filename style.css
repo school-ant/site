@@ -874,6 +874,82 @@ section {
   color: #155062;
 }
 
+.clubPage .clubPhotoWrap {
+  margin: 0.35rem auto 0;
+  width: 100%;
+}
+
+.clubPage .clubPhotoWrapLeader {
+  max-width: 140px;
+}
+
+.clubPage .clubPhotoWrapSection {
+  max-width: 220px;
+}
+
+.clubPage .clubPhoto {
+  aspect-ratio: 4 / 3;
+  object-position: center;
+}
+
+.clubPage .clubPhotoWrapLeader .clubPhoto {
+  aspect-ratio: 4 / 5;
+}
+
+.clubPage .clubInlineMedia {
+  float: right;
+  margin: 0 0 0.4rem 0.9rem;
+}
+
+.clubPage .clubInlineMedia .clubPhotoWrap {
+  margin-top: 0;
+}
+
+.clubPage .clubLeaderCard {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.clubPage .clubLeaderCard h3,
+.clubPage .clubLeaderCard p {
+  grid-column: 2;
+}
+
+.clubPage .clubLeaderCard .clubPhotoWrap {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+@media (max-width: 680px) {
+  .clubPage .clubInlineMedia {
+    float: none;
+    margin: 0.5rem 0 0.65rem;
+  }
+
+  .clubPage .clubPhotoWrapSection {
+    max-width: 280px;
+  }
+
+  .clubPage .clubLeaderCard {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .clubPage .clubLeaderCard h3,
+  .clubPage .clubLeaderCard p,
+  .clubPage .clubLeaderCard .clubPhotoWrap {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .clubPage .clubLeaderCard .clubPhotoWrap {
+    max-width: 170px;
+    margin: 0.2rem 0 0.3rem;
+  }
+}
+
 .entertainmentContent {
   grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
   align-items: start;
