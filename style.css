@@ -1,3 +1,57 @@
+/* Facebook group banner styled as homeHeroContent */
+.fb-banner-link {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 1.2rem;
+}
+.fb-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+  padding: 1.35rem 1.5rem;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top right, rgba(24,119,242,0.18), transparent 28%),
+    linear-gradient(135deg, #103847 0%, #145463 58%, #1b7082 100%);
+  box-shadow: 0 18px 36px rgba(13, 42, 52, 0.18);
+  transition: box-shadow 0.15s, transform 0.13s;
+}
+.fb-banner-link:hover .fb-banner-content,
+.fb-banner-link:focus-visible .fb-banner-content {
+  box-shadow: 0 24px 48px rgba(24, 119, 242, 0.18);
+  transform: translateY(-2px) scale(1.012);
+}
+.fb-banner-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(24, 119, 242, 0.09);
+  flex-shrink: 0;
+}
+.fb-banner-icon svg {
+  display: block;
+}
+.fb-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.fb-banner-title {
+  font-size: clamp(1.15rem, 1.1vw + 1rem, 1.55rem);
+  font-weight: 700;
+  color: #f5fbff;
+  text-shadow: 0 2px 8px rgba(13,42,52,0.18), 0 1px 0 #1877f2;
+}
+.fb-banner-desc {
+  font-size: 1.05rem;
+  color: rgba(245, 251, 255, 0.9);
+  font-weight: 400;
+  text-shadow: 0 1px 6px rgba(13,42,52,0.13);
+}
 @view-transition {
   navigation: auto;
 }
