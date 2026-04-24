@@ -1332,6 +1332,29 @@ section {
   font-size: 0.92rem;
 }
 
+.newsReadMore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #c9dfe8;
+  border-radius: 999px;
+  background: #f5fbfd;
+  color: #103847;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.newsReadMore:hover,
+.newsReadMore:focus-visible {
+  background: #e0f2f9;
+  border-color: #2a7fa5;
+  box-shadow: 0 4px 14px rgba(42, 127, 165, 0.15);
+  outline: none;
+}
+
 .newsGallery {
   margin-top: 1.25rem;
   display: grid;
