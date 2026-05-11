@@ -134,8 +134,8 @@
 
 	<script>
 		document.addEventListener("DOMContentLoaded", async () => {
-			const leaderboardKey = "antypivka-entertainment-leaderboard";
 			const questionHistoryKey = "antypivka-entertainment-question-history";
+			try { localStorage.removeItem("antypivka-entertainment-leaderboard"); } catch (_) {}
 			const questionsPerRound = 10;
 			const progressEl = document.getElementById("quiz-progress");
 			const scoreEl = document.getElementById("quiz-score");
@@ -290,55 +290,30 @@
 				return copy;
 			}
 
-			function loadLeaderboardLocal() {
+			async function loadLeaderboard() {
+				if (!apiBase) return [];
+
 				try {
-					return JSON.parse(localStorage.getItem(leaderboardKey)) || [];
+					const response = await fetch(`${apiBase}/leaderboard`, { cache: "no-store" });
+					if (!response.ok) return [];
+					const data = await response.json();
+					return Array.isArray(data) ? data : [];
 				} catch (error) {
 					return [];
 				}
 			}
 
-			function saveLeaderboardLocal(entries) {
-				localStorage.setItem(leaderboardKey, JSON.stringify(entries));
-			}
-
-			async function loadLeaderboard() {
-				if (!apiBase) {
-					return loadLeaderboardLocal();
-				}
-
-				try {
-					const response = await fetch(`${apiBase}/leaderboard`, { cache: "no-store" });
-					if (!response.ok) throw new Error("bad status");
-					const data = await response.json();
-					return Array.isArray(data) ? data : [];
-				} catch (error) {
-					return loadLeaderboardLocal();
-				}
-			}
-
-			function saveLeaderboardLocalFallback(entry) {
-				const entries = loadLeaderboardLocal();
-				entries.push(entry);
-				entries.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
-				saveLeaderboardLocal(entries.slice(0, 10));
-			}
-
 			async function saveLeaderboardEntry(entry) {
-				if (!apiBase) {
-					saveLeaderboardLocalFallback(entry);
-					return;
-				}
+				if (!apiBase) return;
 
 				try {
-					const response = await fetch(`${apiBase}/leaderboard`, {
+					await fetch(`${apiBase}/leaderboard`, {
 						method: "POST",
 						headers: { "Content-Type": "application/json" },
 						body: JSON.stringify({ name: entry.name, score: entry.score })
 					});
-					if (!response.ok) throw new Error("bad status");
 				} catch (error) {
-					saveLeaderboardLocalFallback(entry);
+					/* swallow — leaderboard is remote-only */
 				}
 			}
 
