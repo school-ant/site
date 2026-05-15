@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v8";
+const CACHE_VERSION = "v9";
 const CACHE_NAME = `school-site-${CACHE_VERSION}`;
 const ASSETS = [
   "site.webmanifest",
@@ -46,6 +46,15 @@ self.addEventListener("fetch", (event) => {
     request.destination === "style" ||
     request.url.endsWith(".html") ||
     request.url.endsWith(".css")
+  ) {
+    event.respondWith(fetch(request));
+    return;
+  }
+
+  // Do not cache leaderboard config or Worker API responses.
+  if (
+    request.url.endsWith("leaderboard-config.js") ||
+    request.url.includes("quiz-leaderboard.qazwsx19901229.workers.dev")
   ) {
     event.respondWith(fetch(request));
     return;

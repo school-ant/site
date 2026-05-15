@@ -19,7 +19,6 @@
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="manifest" href="site.webmanifest">
 	<link rel="stylesheet" href="style.css">
-	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 	<script src="leaderboard-config.js"></script>
 </head>
 
@@ -135,8 +134,8 @@
 
 	<script>
 		document.addEventListener("DOMContentLoaded", async () => {
-			const leaderboardKey = "antypivka-entertainment-leaderboard";
 			const questionHistoryKey = "antypivka-entertainment-question-history";
+			try { localStorage.removeItem("antypivka-entertainment-leaderboard"); } catch (_) {}
 			const questionsPerRound = 10;
 			const progressEl = document.getElementById("quiz-progress");
 			const scoreEl = document.getElementById("quiz-score");
@@ -156,13 +155,7 @@
 			const guessResetButton = document.getElementById("guess-reset");
 			const guessStatusEl = document.getElementById("guess-status");
 			const guessAttemptsEl = document.getElementById("guess-attempts");
-			const remoteConfig = window.ENTERTAINMENT_SUPABASE;
-
-			let supabaseClient = null;
-
-			if (remoteConfig && window.supabase && remoteConfig.url && remoteConfig.key) {
-				supabaseClient = window.supabase.createClient(remoteConfig.url, remoteConfig.key);
-			}
+			const apiBase = window.ENTERTAINMENT_LEADERBOARD_API || null;
 
 			function buildQuestionBank() {
 				const questions = [];
@@ -297,56 +290,30 @@
 				return copy;
 			}
 
-			function loadLeaderboardLocal() {
+			async function loadLeaderboard() {
+				if (!apiBase) return [];
+
 				try {
-					return JSON.parse(localStorage.getItem(leaderboardKey)) || [];
+					const response = await fetch(`${apiBase}/leaderboard`, { cache: "no-store" });
+					if (!response.ok) return [];
+					const data = await response.json();
+					return Array.isArray(data) ? data : [];
 				} catch (error) {
 					return [];
 				}
 			}
 
-			function saveLeaderboardLocal(entries) {
-				localStorage.setItem(leaderboardKey, JSON.stringify(entries));
-			}
-
-			async function loadLeaderboard() {
-				if (!supabaseClient) {
-					return loadLeaderboardLocal();
-				}
-
-				const { data, error } = await supabaseClient
-					.from(remoteConfig.table)
-					.select("name, score, created_at")
-					.order("score", { ascending: false })
-					.order("created_at", { ascending: true })
-					.limit(10);
-
-				if (error) {
-					return loadLeaderboardLocal();
-				}
-
-				return data || [];
-			}
-
 			async function saveLeaderboardEntry(entry) {
-				if (!supabaseClient) {
-					const entries = loadLeaderboardLocal();
-					entries.push(entry);
-					entries.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
-					saveLeaderboardLocal(entries.slice(0, 10));
-					return;
-				}
+				if (!apiBase) return;
 
-				const { error } = await supabaseClient.from(remoteConfig.table).insert({
-					name: entry.name,
-					score: entry.score
-				});
-
-				if (error) {
-					const entries = loadLeaderboardLocal();
-					entries.push(entry);
-					entries.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
-					saveLeaderboardLocal(entries.slice(0, 10));
+				try {
+					await fetch(`${apiBase}/leaderboard`, {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({ name: entry.name, score: entry.score })
+					});
+				} catch (error) {
+					/* swallow — leaderboard is remote-only */
 				}
 			}
 
