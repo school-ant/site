@@ -1418,6 +1418,27 @@ section {
   margin-bottom: 0;
 }
 
+.newsVideoGrid {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.newsVideoCard {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0d2a34;
+  box-shadow: 0 14px 30px rgba(12, 38, 47, 0.14);
+}
+
+.newsVideoCard video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0d2a34;
+}
+
 body.lightboxOpen {
   overflow: hidden;
 }
