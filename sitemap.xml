@@ -62,9 +62,15 @@
   </url>
   <url>
     <loc>https://school-ant.github.io/site/news.html</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://school-ant.github.io/site/news-september1-2026.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://school-ant.github.io/site/news-july28-remembrance-2026.html</loc>
