@@ -1355,6 +1355,102 @@ section {
   outline: none;
 }
 
+.homeAnnouncement {
+  display: block;
+}
+
+.wrestlingAnnouncementCard {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr);
+  gap: 1.2rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #d8e3e8;
+  border-radius: 18px;
+  background: #ffffff;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 16px 34px rgba(12, 38, 47, 0.08);
+}
+
+.wrestlingAnnouncementCard img {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #0d2340;
+}
+
+.wrestlingAnnouncementCard h2 {
+  margin: 0 0 0.55rem;
+  color: #103847;
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+}
+
+.wrestlingAnnouncementCard p {
+  margin: 0 0 0.85rem;
+}
+
+.wrestlingNewsLayout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.44fr) minmax(0, 1fr);
+  gap: 1.35rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.wrestlingPoster {
+  position: sticky;
+  top: 1rem;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0d2340;
+  box-shadow: 0 16px 34px rgba(12, 38, 47, 0.14);
+}
+
+.wrestlingPoster img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wrestlingHighlights,
+.wrestlingContact {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid #c9dfe8;
+  border-radius: 16px;
+  background: #f5fbfd;
+}
+
+.wrestlingHighlights ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.wrestlingHighlights li {
+  margin-bottom: 0.35rem;
+}
+
+.wrestlingContact a {
+  color: #103847;
+  font-weight: 800;
+}
+
+@media (max-width: 760px) {
+  .wrestlingAnnouncementCard,
+  .wrestlingNewsLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .wrestlingPoster {
+    position: static;
+    max-width: 520px;
+  }
+}
+
 .newsDocuments {
   margin-top: 1.2rem;
   display: grid;
