@@ -66,7 +66,15 @@
 					</ul>
 				</article>
 				<article class="healthyFoodContent">
-					<h3>Харчування</h3>
+					<div class="foodIntro">
+						<p class="foodIntroLabel">🍎🥗 Щодня з турботою про дітей</p>
+						<h3>Здорове харчування — запорука здоров’я та успішного навчання!</h3>
+						<p>У нашій школі учні мають можливість отримувати безкоштовне, повноцінне та збалансоване харчування. 💚</p>
+						<p>Ми дбаємо про те, щоб шкільні обіди були не лише смачними, а й корисними: містили необхідні поживні речовини, овочі, фрукти та інші продукти, важливі для дитячого організму. 🍲🥕🍏</p>
+						<p>Адже правильне харчування допомагає дітям бути активними, уважними на уроках, краще засвоювати знання та зростати здоровими.</p>
+						<p class="foodIntroClosing">💙💛 Турбота про дітей — це турбота про майбутнє!<br>Нехай кожен шкільний день буде ситним, корисним і наповненим енергією для нових знань та досягнень! 🌟</p>
+					</div>
+					<h3>Організація харчування</h3>
 					<p>Їдальня розміщена на другому поверсі закладу, працює щоденно, крім суботи та неділі.</p>
 					<p>Їдальня готує гарячі обіди для учнів 1-4-х класів та для дітей пільгових категорій.</p>
 					<p>Меню для учнів розробляється відповідно до чинних вимог і рекомендацій щодо організації здорового харчування в закладах освіти.</p>
@@ -75,19 +83,47 @@
 					<p>Роботу їдальні контролюють відповідальні працівники закладу освіти.</p>
 					<div class="foodGallery" aria-label="Фото харчування в їдальні">
 						<figure>
-							<img src="images/food.webp?v=20260423" alt="Організація харчування учнів у шкільній їдальні" loading="lazy" decoding="async">
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-18-584.jpg" alt="Страви та свіжі овочі для шкільного обіду" loading="lazy" decoding="async" class="galleryImage"></button>
 						</figure>
 						<figure>
-							<img src="images/food1.webp?v=20260423" alt="Готові страви для учнів у шкільній їдальні" loading="lazy" decoding="async">
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-19-404.jpg" alt="Повноцінний шкільний обід із гарніром та овочами" loading="lazy" decoding="async" class="galleryImage"></button>
 						</figure>
 						<figure>
-							<img src="images/food2.webp?v=20260423" alt="Щоденне меню та харчування дітей у закладі освіти" loading="lazy" decoding="async">
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-19-958.jpg" alt="Порції шкільного обіду для учнів" loading="lazy" decoding="async" class="galleryImage"></button>
+						</figure>
+						<figure>
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-20-674.jpg" alt="Учні обідають у шкільній їдальні" loading="lazy" decoding="async" class="galleryImage"></button>
+						</figure>
+						<figure>
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-20-946.jpg" alt="Учениці під час корисного шкільного обіду" loading="lazy" decoding="async" class="galleryImage"></button>
+						</figure>
+						<figure>
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-21-217.jpg" alt="Школярі обідають разом у їдальні" loading="lazy" decoding="async" class="galleryImage"></button>
+						</figure>
+						<figure>
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-21-567.jpg" alt="Діти насолоджуються гарячим обідом" loading="lazy" decoding="async" class="galleryImage"></button>
+						</figure>
+						<figure>
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-21-844.jpg" alt="Обід школярів зі свіжими овочами та фруктами" loading="lazy" decoding="async" class="galleryImage"></button>
+						</figure>
+						<figure>
+							<button type="button" class="galleryThumb"><img src="images/240926/зображення_viber_2026-09-24_10-45-22-134.jpg" alt="Учні харчуються у шкільній їдальні" loading="lazy" decoding="async" class="galleryImage"></button>
 						</figure>
 					</div>
 				</article>
 			</div>
 		</section>
 	</main>
+	<div class="galleryLightbox" id="galleryLightbox" hidden>
+		<div class="galleryLightboxBackdrop" id="galleryLightboxBackdrop"></div>
+		<button type="button" class="galleryLightboxClose" id="galleryLightboxClose" aria-label="Закрити перегляд">&times;</button>
+		<button type="button" class="galleryLightboxNav prev" id="galleryPrev" aria-label="Попереднє фото">&#10094;</button>
+		<figure class="galleryLightboxFigure">
+			<img src="" alt="" id="galleryLightboxImage" aria-hidden="true">
+			<figcaption id="galleryLightboxCaption"></figcaption>
+		</figure>
+		<button type="button" class="galleryLightboxNav next" id="galleryNext" aria-label="Наступне фото">&#10095;</button>
+	</div>
 
 	<div class="siteFooter">
 		<footer>
@@ -95,6 +131,55 @@
 			<script>document.getElementById("currentYear").textContent = new Date().getFullYear();</script>
 		</footer>
 	</div>
+	<script>
+		(() => {
+			const images = Array.from(document.querySelectorAll(".galleryImage"));
+			const lightbox = document.getElementById("galleryLightbox");
+			const lightboxImage = document.getElementById("galleryLightboxImage");
+			const lightboxCaption = document.getElementById("galleryLightboxCaption");
+			const closeButton = document.getElementById("galleryLightboxClose");
+			const prevButton = document.getElementById("galleryPrev");
+			const nextButton = document.getElementById("galleryNext");
+			const backdrop = document.getElementById("galleryLightboxBackdrop");
+			let activeIndex = 0;
+			if (!images.length || !lightbox || !lightboxImage || !lightboxCaption || !closeButton || !prevButton || !nextButton || !backdrop) return;
+			const renderImage = () => {
+				const current = images[activeIndex];
+				lightboxImage.src = current.src;
+				lightboxImage.alt = current.alt;
+				lightboxCaption.textContent = current.alt;
+			};
+			const openLightbox = (index) => {
+				activeIndex = index;
+				renderImage();
+				lightbox.hidden = false;
+				document.body.classList.add("lightboxOpen");
+			};
+			const closeLightbox = () => {
+				lightbox.hidden = true;
+				document.body.classList.remove("lightboxOpen");
+			};
+			const showNext = () => {
+				activeIndex = (activeIndex + 1) % images.length;
+				renderImage();
+			};
+			const showPrev = () => {
+				activeIndex = (activeIndex - 1 + images.length) % images.length;
+				renderImage();
+			};
+			images.forEach((image, index) => image.addEventListener("click", () => openLightbox(index)));
+			closeButton.addEventListener("click", closeLightbox);
+			nextButton.addEventListener("click", showNext);
+			prevButton.addEventListener("click", showPrev);
+			backdrop.addEventListener("click", closeLightbox);
+			document.addEventListener("keydown", (event) => {
+				if (lightbox.hidden) return;
+				if (event.key === "Escape") closeLightbox();
+				if (event.key === "ArrowRight") showNext();
+				if (event.key === "ArrowLeft") showPrev();
+			});
+		})();
+	</script>
 </body>
 
 </html>
