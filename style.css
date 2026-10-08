@@ -1520,6 +1520,60 @@ section {
   line-height: 1.35;
 }
 
+.internetSafetyTips {
+  margin: 1.2rem 0;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid #c9e5d5;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f0faf4, #f5fbfd);
+}
+
+.internetSafetyTips h4 {
+  margin: 0 0 0.7rem;
+  color: #14563b;
+  font-size: 1.1rem;
+}
+
+.internetSafetyTips ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.internetSafetyTips li + li {
+  margin-top: 0.5rem;
+}
+
+.newsPresentation {
+  margin: 1.25rem 0 0;
+  overflow: hidden;
+  border: 1px solid #d8e3e8;
+  border-radius: 18px;
+  background: #eef4f7;
+  box-shadow: 0 14px 30px rgba(12, 38, 47, 0.12);
+}
+
+.newsPresentation iframe {
+  display: block;
+  width: 100%;
+  height: min(78vh, 900px);
+  min-height: 520px;
+  border: 0;
+  background: #ffffff;
+}
+
+.newsPresentation figcaption {
+  padding: 0.75rem 1rem;
+  color: #5a7480;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .newsPresentation iframe {
+    height: 70vh;
+    min-height: 420px;
+  }
+}
+
 .newsDocumentExt {
   display: inline-flex;
   align-items: center;
